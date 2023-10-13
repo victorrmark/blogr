@@ -1,0 +1,549 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Overpass', sans-serif;
+    font-size: 62.5%;
+}
+
+body{
+    font-size: clamp(1.6rem, 4.8vw, 1.8rem);
+    background: hsl(0, 0%, 97%);
+}
+
+button{
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.desktop{
+    display: none;
+}
+
+/*styling for the header section*/
+header{
+    background-image: url(./images/bg-pattern-intro-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: 35% 30%;
+    padding: 4rem 2rem 12.5rem;
+    position: relative;
+    border-radius: 0 0 0 7rem;
+    width: 100%;
+}
+
+header::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.open{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggleMenu{
+    position: absolute;
+    background: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    width: 100%;
+    left: 0;
+    top: 6rem;
+    padding: 0 2.5rem;
+    text-align: center;
+    color: hsl(240,10%, 16%);
+    transition:  max-height 0.5s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+    box-shadow: 0 5px 15px hsla(240,10%, 16%, 0.2);
+    z-index: 1;
+}
+
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.toggleMenu.show{
+    max-height: 1000px;
+}
+
+.accordion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .9rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.accordion img{
+    transition: transform 0.5s ease;
+}
+
+.accordion img.active{
+    transform: rotate(180deg);
+}
+
+.dropdown-content{
+    background-color:hsl(0, 0%, 87%);
+    width: 100%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    padding: 0 .5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.dropdown-content.active{
+    max-height: 500px; 
+}
+
+.dropdown-content a{
+    text-decoration: none;
+    color: hsl(207, 13%, 34%);
+    display: block;
+    margin: 2rem;
+    font-weight: bold;
+    transition: color 0.12s ease;
+}
+.dropdown-content a:hover{
+    color: hsl(0, 0%, 100%);
+}
+
+.signup{
+    padding: 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+}
+
+.signup a{
+    color: hsl(207, 13%, 34%);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup button{
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    border: none;
+    padding: 1.5rem 4rem;
+    border-radius: 4rem;
+    background-image: linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+}
+
+.header-text{
+    text-align: center;
+    margin-top: 15rem;
+    color: hsl(0, 0%, 100%);
+    line-height: 1.3;
+    padding: 0 .5rem;
+}
+
+h1{
+    font-size: clamp(3.5rem, 9vw, 5rem);
+    margin-bottom: 1.5rem;
+}
+
+.main-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.main-buttons button{
+    border-radius: 2rem;
+    padding: 1.2rem 1.7rem;
+    font-weight: bold;
+}
+
+.start{
+    color: hsl(356, 100%, 66%);
+    border: none;
+    background: hsl(0, 0%, 100%);
+    transition: background .5s ease-in-out;
+}
+
+.more{
+    border: 1.5px solid hsl(0, 0%, 100%);
+    background: none;
+    color: hsl(0, 0%, 100%);
+    transition: background .5s ease-in-out;
+}
+
+.more:hover{
+    color: hsl(353, 100%, 62%);
+    background: hsl(0, 0%, 100%);
+}
+
+.start:hover{
+    color: hsl(0, 0%, 100%);
+    background: hsl(355, 100%, 74%);
+}
+
+/*style for the first part of body (main section)*/
+.first-section{
+    padding: 8rem 2.5rem 0;
+    text-align: center;
+    line-height: 1.5;
+    color: hsl(207, 13%, 34%);
+}
+
+.feature-img{
+    width: min(100%, 350px);
+    height: auto;
+}
+
+.feature-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.feature-img.mobile{
+    margin: 0 auto 3rem;
+}
+
+.features{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.5rem;
+}
+
+h2{
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+h3{
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.second-section{
+    background-image: url(./images/bg-pattern-circles.svg);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center -200px;;
+    padding: 20rem 2.5rem 10rem;
+    position: relative;
+    border-radius: 0 7rem 0 7rem;
+    width: 100%;
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    margin-top: min(61vw, 23rem);
+    line-height: 1.5;
+}
+
+.second-section::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.second-section .feature-img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: min(-1rem, -15rem);
+}
+
+.third-section{
+    padding: 8rem 2.5rem;
+    text-align: center;
+    line-height: 1.5;
+    color: hsl(207, 13%, 34%);
+}
+
+footer{
+    background: hsl(240,10%, 16%);
+    color:hsl(0, 0%, 100%);
+    border-radius: 0 7rem 0 0;
+    padding: 8rem 2.5rem 2rem;
+    text-align: center;
+}
+
+footer .feature{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 7rem;
+    margin-bottom: 8rem;
+}
+
+.footer-features{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4.5rem;
+}
+
+
+.sub-feature{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+}
+
+.sub-feature p{
+    font-weight: bold;
+}
+
+.sub-feature span{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.sub-feature a{
+    display: block;
+    color: hsl(240, 2%, 79%);
+    text-decoration: none;
+}
+
+.sub-feature a:hover{
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 1200px){
+    .mobile{
+        display: none
+    }
+
+    .desktop{
+        display: block;
+    }
+
+    header{
+        background-image: url(./images/bg-pattern-intro-desktop.svg);
+        background-position: 29% 52%;
+    }
+
+    header::before{
+        background-image: linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    }
+
+    nav{
+        width: 110rem;
+        margin: 0 auto;
+        justify-content: flex-start;
+    }
+
+    nav .desktop{
+        margin-left: 6rem;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu{
+        flex: 1;
+        display: flex;
+        gap: 4rem;
+    }
+
+    .dropbox{
+        position: relative;
+        cursor: pointer;
+    }
+
+    .dropbtn{
+        display: flex;
+        gap: .5rem;
+        color:hsl(0, 0%, 100%);
+        align-items: center;
+    }
+
+    .dropbox:hover .dropbtn, .dropbtn:active{
+        font-weight: bold;
+    }
+
+    .drop-contnt{
+        position: absolute;
+        top: 5rem;
+        left: -1rem;
+        background: hsl(0, 0%, 100%);
+        z-index: 1;
+        border-radius: 1rem;
+        max-height: 0;
+        padding: 0 7rem 0 2.5rem;
+        overflow: hidden;
+        box-shadow: 0 0 2rem hsla(0, 0%, 0%, 0.3);
+        transition: max-height 0.5s ease;
+    }
+
+    .drop-contnt.active{
+        max-height: 300px;
+    }
+
+    .drop-contnt a {
+        float: none;
+        color: hsl(207, 13%, 34%);
+        text-decoration: none;
+        margin-bottom: 1.2rem;
+        display: block;
+        text-align: left;
+    }
+
+    .drop-contnt a:hover{
+        font-weight: bold;
+    }
+
+    .drop-contnt a:first-child{
+        margin-top: 2.5rem;
+    }
+    .drop-contnt a:last-child{
+        margin-bottom: 2.5rem;
+    }
+
+    .dropbtn img{
+        transition: transform .7s ease;
+    }
+    .dropbtn img.active{
+        transform: rotate(180deg);
+    }
+
+    .signup{
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .signup a{
+        font-weight: normal;
+        color: hsl(0, 0%, 100%)
+    }
+
+    .signup a:hover{
+        font-weight: bold;
+    }
+
+    .signup button{
+        color: hsl(356, 100%, 66%);
+        background: hsl(0, 0%, 100%);
+        transition: background .7s ease;
+    }
+
+    .signup button:hover{
+        color: hsl(0, 0%, 100%);
+        background: hsl(355, 100%, 74%);
+    }
+
+    main{
+        overflow: hidden;
+    }
+
+    .header-text{
+        width: 110rem;
+        margin: 15rem auto 0;
+    }
+
+    .first-section{
+        padding: 9rem 0 0;
+        width: 110rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .first-section img{
+        position: absolute;
+        right: -350px;
+        top: 10px;
+        width: 80rem;
+    }
+
+    .first-section .first-features{
+        width: 50%;
+        text-align: left;
+        margin-top: 5rem;
+    }
+
+    .second-section{
+        padding: 11.5rem 2.5rem;
+        background-size: 70%;
+        background-position: -200px -500px;
+    }
+
+    .second-content{
+        width: 110rem;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: left;
+    }
+
+    .second-content .features-text, .third-section .features{
+        width: 50%;
+    }
+
+    .second-content img{
+        position: absolute;
+        left: -3.5rem;
+        top: -19rem;
+    }
+
+    .third-section{
+        padding: 30rem 0;
+        position: relative;
+        width: 110rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        text-align: left;
+    }
+
+    .third-section img{
+        position: absolute;
+        left: -385px;
+        top: 95px;
+        width: 92rem;
+    }
+
+    footer .feature{
+        flex-direction: row;
+        column-gap: 30rem;
+        width: 110rem;
+        margin: 0 auto 8rem;
+        align-items: flex-start;
+    }
+
+    .footer-features{
+        flex-direction: row;
+        column-gap: 15rem;
+        text-align: left;
+    }
+
+
+}
